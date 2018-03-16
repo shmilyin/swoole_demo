@@ -55,6 +55,7 @@ $server->on('receive', function ($serv, $fd, $from_id, $data){
 
 $server->on('close', function ($serv, $fd) {
     echo "Client: Close.\n";
+    unset($serv->clients[$fd]);
     $serv->send($fd,"Good bye! See you next time.\n");
 });
 $server -> start();
